@@ -47,5 +47,6 @@ public class DocumantionTest extends BaseTest {
         //Проверка всех Руководств
         documantionTestSteps.checkManuals();
 
+
     }
 }
