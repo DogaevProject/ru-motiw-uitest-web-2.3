@@ -48,36 +48,5 @@ public class DocumantionTest extends BaseTest {
         documantionTestSteps.checkManuals();
 
 
-
-        /*
-
-        assertTrue("all services are running, and are shown in green",
-                systemInformationSteps.checkingOfSystemServices());
-
-        // Выход из системы
-        internalPage.logout();
-        // Проверка - пользователь разлогинен
-        assertTrue(loginPageSteps.isNotLoggedIn());
-    }
-
-    @Video(name = "Ошибки в индексах - Поискова система")
-    @Test(priority = 2)
-    public void verifyNotIndexingErrors() throws Exception {
-        loginPageSteps.loginAs(ADMIN);
-        assertThat("Check that the displayed menu item 8 (Logo; Tasks; Documents; Messages; Calendar; Library; Tools; Details)",
-                internalPage.hasMenuUserComplete()); // Проверяем отображение п.м. на внутренней странице
-        assertTrue(loginPageSteps.isLoggedIn());
-
-        // Переход в раздел Администрирование/Поисковая система
-        goToURLSearchSystemPage();
-        assertTrue("The absence of errors in the search indexes",
-                searchSystemSteps.checkNotIndexingErrors()); // Проверяем отсутствие ошибок в индексах
-
-        // Выход из системы
-        internalPage.logout();
-        // Проверка - пользователь разлогинен
-        assertTrue(loginPageSteps.isNotLoggedIn());
-    }
-*/
     }
 }
