@@ -70,7 +70,6 @@ public class FormDocRegisterCardsEditTasksSteps extends BaseSteps {
                 if (e.getText().equals(textValue)) {
                     e.shouldBe(Condition.visible);
                     e.click();
-                    sleep(2000);
                     break; //без break в случае большого списка значений в конт.меню происходил выбор найденного значения, а после этого продолжался цикл. Все падало.
                 }
             }
