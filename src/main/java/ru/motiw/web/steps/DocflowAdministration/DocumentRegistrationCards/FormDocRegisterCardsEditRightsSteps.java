@@ -10,7 +10,7 @@ import ru.motiw.web.model.DocflowAdministration.DocumentRegistrationCards.Settin
 import ru.motiw.web.steps.BaseSteps;
 
 import static com.codeborne.selenide.Selenide.page;
-import static ru.motiw.utils.ElementUtil.offsetAndRangeOfValuesOnTheList;
+import static ru.motiw.utils.ElementUtil.setOfValuesOnTheList;
 
 /**
  * Форма редактирвоания РКД - вкладка ПРАВА
@@ -54,13 +54,13 @@ public class FormDocRegisterCardsEditRightsSteps extends BaseSteps {
                                                                                       SettingsFinalVersion finalVersionChanging) {
         if (finalVersionChanging == null) return this;
         else if (finalVersionChanging == SettingsFinalVersion.NO) {
-            offsetAndRangeOfValuesOnTheList(finalSelectionOfFeatureVersionForSelectedRoles,
+            setOfValuesOnTheList(finalSelectionOfFeatureVersionForSelectedRoles,
                     getCollectionOfListItems(), SettingsFinalVersion.NO.getNameOfTheEnumerationValues());
         } else if (finalVersionChanging == SettingsFinalVersion.YES) {
-            offsetAndRangeOfValuesOnTheList(finalSelectionOfFeatureVersionForSelectedRoles,
+            setOfValuesOnTheList(finalSelectionOfFeatureVersionForSelectedRoles,
                     getCollectionOfListItems(), SettingsFinalVersion.YES.getNameOfTheEnumerationValues());
         } else if (finalVersionChanging == SettingsFinalVersion.VALUE_IS_NOT_DEFINED) {
-            offsetAndRangeOfValuesOnTheList(finalSelectionOfFeatureVersionForSelectedRoles,
+            setOfValuesOnTheList(finalSelectionOfFeatureVersionForSelectedRoles,
                     getCollectionOfListItems(), SettingsFinalVersion.VALUE_IS_NOT_DEFINED.getNameOfTheEnumerationValues());
         }
         return this;
@@ -81,18 +81,18 @@ public class FormDocRegisterCardsEditRightsSteps extends BaseSteps {
         if (editionOwnDocumentsOnReview == null) return this;
         switch (editionOwnDocumentsOnReview) {
             case VALUE_IS_NOT_DEFINED:
-                offsetAndRangeOfValuesOnTheList(statusEditYourDocuments, getCollectionOfListItems(),
+                setOfValuesOnTheList(statusEditYourDocuments, getCollectionOfListItems(),
                         EditionOwnDocuments.YES.getNameOfTheEnumerationValues());
                 break;
             case NO:
-                offsetAndRangeOfValuesOnTheList(statusEditYourDocuments, getCollectionOfListItems(),
+                setOfValuesOnTheList(statusEditYourDocuments, getCollectionOfListItems(),
                         EditionOwnDocuments.NO.getNameOfTheEnumerationValues());
                 break;
             case YES:
-                offsetAndRangeOfValuesOnTheList(statusEditYourDocuments, getCollectionOfListItems(),
+                setOfValuesOnTheList(statusEditYourDocuments, getCollectionOfListItems(),
                         EditionOwnDocuments.YES.getNameOfTheEnumerationValues());
             case USER_RIGHT_EDIT_THEIR_DOCUMENTS:
-                offsetAndRangeOfValuesOnTheList(statusEditYourDocuments, getCollectionOfListItems(),
+                setOfValuesOnTheList(statusEditYourDocuments, getCollectionOfListItems(),
                         EditionOwnDocuments.USER_RIGHT_EDIT_THEIR_DOCUMENTS.getNameOfTheEnumerationValues());
         }
         return this;
@@ -126,19 +126,19 @@ public class FormDocRegisterCardsEditRightsSteps extends BaseSteps {
         if (creationOfLinkedDocuments == null) return this;
         switch (creationOfLinkedDocuments) {
             case VALUE_IS_NOT_SELECTED:
-                offsetAndRangeOfValuesOnTheList(formEditRCDRightsElement.getCreationOfLinkedDocuments(), getCollectionOfListItems(),
+                setOfValuesOnTheList(formEditRCDRightsElement.getCreationOfLinkedDocuments(), getCollectionOfListItems(),
                         CreationOfLinkedDocuments.VALUE_IS_NOT_SELECTED.getNameOfTheEnumerationValues());
                 break;
             case NO:
-                offsetAndRangeOfValuesOnTheList(formEditRCDRightsElement.getCreationOfLinkedDocuments(), getCollectionOfListItems(),
+                setOfValuesOnTheList(formEditRCDRightsElement.getCreationOfLinkedDocuments(), getCollectionOfListItems(),
                         CreationOfLinkedDocuments.NO.getNameOfTheEnumerationValues());
                 break;
             case USERS_WITH_RIGHT:
-                offsetAndRangeOfValuesOnTheList(formEditRCDRightsElement.getCreationOfLinkedDocuments(), getCollectionOfListItems(),
+                setOfValuesOnTheList(formEditRCDRightsElement.getCreationOfLinkedDocuments(), getCollectionOfListItems(),
                         CreationOfLinkedDocuments.USERS_WITH_RIGHT.getNameOfTheEnumerationValues());
                 break;
             case USERS_WITH_RIGHT_LINKED_DOCUMENTS_CREATION:
-                offsetAndRangeOfValuesOnTheList(formEditRCDRightsElement.getCreationOfLinkedDocuments(), getCollectionOfListItems(),
+                setOfValuesOnTheList(formEditRCDRightsElement.getCreationOfLinkedDocuments(), getCollectionOfListItems(),
                         CreationOfLinkedDocuments.USERS_WITH_RIGHT_LINKED_DOCUMENTS_CREATION.getNameOfTheEnumerationValues());
                 break;
             default:

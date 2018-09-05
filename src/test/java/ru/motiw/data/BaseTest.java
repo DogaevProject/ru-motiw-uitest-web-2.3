@@ -34,7 +34,7 @@ public abstract class BaseTest {
         setDriverByName("chrome");
         /*VideoRecorder.conf()
                 .withVideoFolder("build/reports/video");*/
-        Configuration.baseUrl = http + "172.22.244.53";
+        Configuration.baseUrl = http + "motiwtest5.test.lan";
         Configuration.timeout = 8000;
         TextReport.onSucceededTest = true;
         TextReport.onFailedTest = true;

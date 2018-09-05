@@ -1,16 +1,14 @@
 package ru.motiw.web.steps.DocflowAdministration.DocumentRegistrationCards;
 
-import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.ex.ElementNotFound;
 import ru.motiw.web.elements.elementsweb.DocflowAdministration.DocumentRegistrationCards.FormDocRegisterCardsEditTasksElements;
 import ru.motiw.web.model.DocflowAdministration.DocumentRegistrationCards.DocRegisterCards;
 import ru.motiw.web.steps.BaseSteps;
 
 import static com.codeborne.selenide.Selectors.byXpath;
-import static com.codeborne.selenide.Selenide.*;
-import static org.testng.AssertJUnit.assertTrue;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.page;
+import static ru.motiw.utils.ElementUtil.setOfValuesOnTheList;
 
 /**
  * Форма редактирвоания РКД - вкладка ЗАДАЧИ
@@ -53,33 +51,6 @@ public class FormDocRegisterCardsEditTasksSteps extends BaseSteps {
         }
         return this;
     }
-
-    /**
-     * Метод выбора задач по рассмотрению из списка;
-     *
-     * @param fieldActivation передаваемый локатор для активация элемента для последующего поиска значения из списка
-     * @param collection      все элементы коллекции
-     * @param textValue       передаваемый элемент для выбора его из коллекции
-     */
-
-    private static void setOfValuesOnTheListOfReviewTasks(SelenideElement fieldActivation, ElementsCollection collection,
-                                                       String textValue) {
-        fieldActivation.click();
-        try {
-            for (SelenideElement e : collection) {
-                if (e.getText().equals(textValue)) {
-                    e.shouldBe(Condition.visible);
-                    e.click();
-                    break; //без break в случае большого списка значений в конт.меню происходил выбор найденного значения, а после этого продолжался цикл. Все падало.
-                }
-            }
-        } catch (ElementNotFound e) {
-            assertTrue("Actual error message: " + e.getMessage(),
-                    e.getMessage().contains("Element list not found"));
-        }
-
-    }
-
 
 
 
@@ -137,7 +108,7 @@ public class FormDocRegisterCardsEditTasksSteps extends BaseSteps {
 
     public FormDocRegisterCardsEditTasksSteps toSetTheTypeOfReviewTasks(DocRegisterCards taskTypeValue, String taskTypeForConsideration) {
         tasksTabRCD();
-        setOfValuesOnTheListOfReviewTasks($(byXpath(String.format("(//span[contains(text(),'%s')]/../..//..//div[contains(@id,'combo')])[4]", taskTypeForConsideration))),
+        setOfValuesOnTheList($(byXpath(String.format("(//span[contains(text(),'%s')]/../..//..//div[contains(@id,'combo')])[4]", taskTypeForConsideration))),
                 getCollectionOfListItems(), taskTypeValue.getTheTypeOfTaskToReviewAndExecutionOfDocument());
         return this;
     }

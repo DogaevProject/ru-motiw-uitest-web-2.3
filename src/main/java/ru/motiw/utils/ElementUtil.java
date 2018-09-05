@@ -46,6 +46,35 @@ public abstract class ElementUtil {
 
     }
 
+
+    /**
+     * Метод выбора значений из списка;
+     *
+     * @param fieldActivation передаваемый локатор для активация элемента для последующего поиска значения из списка
+     * @param collection      все элементы коллекции
+     * @param textValue       передаваемый элемент для выбора его из коллекции
+     */
+
+    public static void setOfValuesOnTheList(SelenideElement fieldActivation, ElementsCollection collection,
+                                                          String textValue) {
+        fieldActivation.click();
+        try {
+            for (SelenideElement e : collection) {
+                if (e.getText().equals(textValue)) {
+                    e.shouldBe(Condition.visible);
+                    e.click();
+                    break; //без break в случае большого списка значений в конт.меню происходил выбор найденного значения, а после этого продолжался цикл. Тест падает.
+                }
+            }
+        } catch (ElementNotFound e) {
+            assertTrue("Actual error message: " + e.getMessage(),
+                    e.getMessage().contains("Element list not found"));
+        }
+
+    }
+
+
+
     /**
      * Имитации нажатия правой кнопки мыши. Клик осуществляется в центр элемента и
      * ожидание появляющегося элемента
