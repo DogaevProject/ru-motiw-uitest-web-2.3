@@ -293,8 +293,8 @@ public class UnionMessageNewSteps extends BaseSteps {
      * Установка признака с докладом
      */
     private UnionMessageNewSteps setReport(boolean isWithReport) {
+        insetDetailsTaskFormElements.getAdditionalTab().click(); //Если это будет внутри if, то происходит клик в чебокс и признак снимается. т.к признак стоит по умолчанимю при создании новой задачи. Вроде бы так это работает.
         if (!isWithReport) {
-            insetDetailsTaskFormElements.getAdditionalTab().click();
             insetDetailsTaskFormElements.getCheckboxWithReport().click();
         }
         return this;
@@ -463,10 +463,10 @@ public class UnionMessageNewSteps extends BaseSteps {
         // выбор пользователя - Ответственные руководители - через searchlive
         choiceUsersThroughTheSearchLiveForSpace(task.getExecutiveManagers(), insetDescriptionTaskFormElements.getExecutiveManagersField(),
                 insetDescriptionTaskFormElements.getEditorField());
-        /*setTaskType(task.getTaskType()) // выбор - Тип задачи
+        setTaskType(task.getTaskType()) // выбор - Тип задачи
                 .setReport(task.getIsWithReport())
                 .setSecret(task.getIsSecret())
-                .setReview(task.getIsForReview());*/ //TODO Не переходит на вкладку Дополнительно. Зачем нужно setTaskType  не понятно - все равно это создание по типу Обычный.
+                .setReview(task.getIsForReview()); //TODO Не переходит на вкладку Дополнительно. Зачем нужно setTaskType  не понятно - все равно это создание по типу Обычный. см. тоже creatingTaskWithTheTaskOfIWG
 
         return this;
     }
@@ -493,11 +493,11 @@ public class UnionMessageNewSteps extends BaseSteps {
         // выбор пользователя - Ответственные руководители - через searchlive
         choiceUsersThroughTheSearchLiveForSpace(task.getExecutiveManagers(), insetDescriptionTaskFormElements.getExecutiveManagersField(),
                 insetDescriptionTaskFormElements.getEditorField());
-        /*setTaskType(task.getTaskType())
+        setTaskType(task.getTaskType())
                 .addTasksIWG(task.getIWG())
                 .setReport(task.getIsWithReport())
                 .setSecret(task.getIsSecret())
-                .setReview(task.getIsForReview());*/
+                .setReview(task.getIsForReview());
         saveTask();
     }
 

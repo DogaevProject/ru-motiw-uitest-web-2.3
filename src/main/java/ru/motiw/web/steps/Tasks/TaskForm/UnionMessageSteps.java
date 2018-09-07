@@ -149,13 +149,13 @@ public class UnionMessageSteps extends UnionMessageNewSteps {
      */
     public UnionMessageSteps ensurePageLoaded() {
         if ($(unionMessageElements.getTabIWG()).isDisplayed()) {
-            checkDisplayedTabsInTheShapeOfAnObject(By.xpath("//span[text()][ancestor::em[contains(@class,'x-tab')]][ancestor::li[not(@style='display: none;')]]"), 10,
+            checkDisplayedTabsInTheShapeOfAnObject(By.xpath("//span[text()][ancestor::em[contains(@class,'x-tab')]][ancestor::li[not(@style='display: none;')]]"), 11,
                     By.xpath("//span[text()][ancestor::em[contains(@class,'x-tab')]][ancestor::li[not(@style='display: none;')]]"),
-                    new String[]{"Действия", "Описание", "Изолированные рабочие группы", "Файлы", "Планирование", "События", "Контакты", "Журнал", "Связь", "Дополнительно"});
+                    new String[]{"\u00A0", "Действия", "Описание", "Изолированные рабочие группы", "Файлы", "Планирование", "События", "Контакты", "Журнал", "Связь", "\u00A0"});
         } else {
             checkDisplayedTabsInTheShapeOfAnObject(By.xpath("//span[text()][ancestor::em[contains(@class,'x-tab')]][ancestor::li[not(@style='display: none;')]]"), 10,
                     By.xpath("//span[text()][ancestor::em[contains(@class,'x-tab')]][ancestor::li[not(@style='display: none;')]]"),
-                    new String[]{"\u00A0","Действия", "Описание", "Файлы", "Планирование", "События", "Контакты", "Журнал", "Связь", "\u00A0"});
+                    new String[]{"\u00A0", "Действия", "Описание", "Файлы", "Планирование", "События", "Контакты", "Журнал", "Связь", "\u00A0"});
         }
         return this;
     }

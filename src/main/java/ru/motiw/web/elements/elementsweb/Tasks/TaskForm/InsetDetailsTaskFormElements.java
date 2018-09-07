@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
  */
 public class InsetDetailsTaskFormElements {
 
-    @FindBy(xpath = "//li[contains (@id, 'additional')]//span[contains (@class, 'strip')]/span")
+    @FindBy(xpath = "//li[contains (@id, 'additional')]//span[contains (@class, 'strip')]/img")
     private SelenideElement additionalTab;
 
     @FindBy(xpath = "//*[contains (@id, 'iswithreport')]")
