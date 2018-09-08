@@ -1,6 +1,5 @@
 package ru.motiw.web.steps.Login;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import ru.motiw.web.elements.elementsweb.Login.LoginPageElements;
 import ru.motiw.web.model.Administration.Users.Employee;
@@ -10,8 +9,8 @@ import ru.motiw.web.steps.Home.InternalSteps;
 import ru.motiw.web.steps.Home.LibrarySteps;
 
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.sleep;
 import static ru.motiw.web.steps.Options.MyPropertiesSteps.goToURLPwd;
 
 /**
@@ -62,9 +61,9 @@ public class LoginStepsSteps extends BaseSteps {
         /*
         *В некоторых случаях необходимо ожидание после авторизации. Учтены три разных случаев возможных после авторизации.
         *Но для UserTest loginPageSteps.loginAs(editUser) не хватает ожидания.
-        *TODO вынести в отдельный метод см. как waitForMask
+        *TODO вынести в отдельный метод см. как waitForMask. Пока что добавил просто sleep в  public boolean newUserIsLoggedInAs  - посмотрим, будет ли падать
         */
-        $(By.xpath("//div[@id='logo' or text()='Доступ запрещен' or  label[text()='Вам необходимо сменить пароль']]")).waitUntil(visible, 10000);
+        //$(By.xpath("//div[@id='logo' or text()='Доступ запрещен' or  label[text()='Вам необходимо сменить пароль']]")).waitUntil(visible, 10000);
         return this;
     }
 
@@ -122,6 +121,7 @@ public class LoginStepsSteps extends BaseSteps {
      * в реквизитах пользователя
      */
     public boolean newUserIsLoggedInAs(Employee user) {
+        sleep(1000);
         return isLoggedIn()
                 && getLoggedUser().getLoginName().equals(user.getLoginName());
     }
