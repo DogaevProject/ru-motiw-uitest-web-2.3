@@ -171,7 +171,6 @@ public class UsersTest extends BaseTest {
          * валидация - авторизации под вновь созданными пользователями
          */
         loginPageSteps.loginAs(editUser);
-        //sleep(8000); //для этого юзера не хватает ожидания проверки .waitUntil в LoginStepsSteps loginAs. Пока что добавил просто sleep в  public boolean newUserIsLoggedInAs  - посмотрим, будет ли падать
         assertTrue(loginPageSteps.newUserIsLoggedInAs(editUser));
         assertTrue(loginPageSteps.checkTheSystemFolderMappingUserLibrary(editUser)); // проверяем отображение системной папки Библиотека пользователя
         internalPageSteps.logout(); // Выход из системы
