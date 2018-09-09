@@ -12,7 +12,6 @@ import ru.motiw.web.steps.Home.LibrarySteps;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.page;
-import static com.codeborne.selenide.Selenide.sleep;
 import static ru.motiw.web.steps.Options.MyPropertiesSteps.goToURLPwd;
 
 /**
@@ -80,16 +79,10 @@ public class LoginStepsSteps extends BaseSteps {
 
     /*
      *В некоторых случаях необходимо ожидание после авторизации. Учтены три разных случаев возможных после авторизации.
-     * Заодно проверяем элементы и текст, которые должны быть при этих случаях
+     * Заодно проверяем элементы и текст, которые должны быть в этих случаях
      */
     private void waitAfterAuthorization() {
-        sleep(1000);
-        if (loginPageElements.getLogin().exists()) // если после sleep, все ещё есть поля формы логина, то значит авторизация не прошла
-        {
-            $(By.xpath("//div[text()='Доступ запрещен']")).waitUntil(visible, 10000);
-        } else
-            $(By.xpath("//div[@id='logo' or label[text()='Вам необходимо сменить пароль']]")).waitUntil(visible, 10000); // авторизация прошла, должно быть либо лого в меню, либо форма смены пароля.
-
+       $(By.xpath("//div[@id='logo' or text()='Доступ запрещен' or  label[text()='Вам необходимо сменить пароль']]")).waitUntil(visible, 10000); //
     }
 
     /**

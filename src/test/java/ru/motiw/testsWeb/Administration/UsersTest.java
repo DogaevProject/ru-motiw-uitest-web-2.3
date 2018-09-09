@@ -2,8 +2,10 @@ package ru.motiw.testsWeb.Administration;
 
 import com.automation.remarks.testng.VideoListener;
 import com.automation.remarks.video.annotations.Video;
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.testng.TextReport;
 import com.codeborne.selenide.testng.annotations.Report;
+import org.openqa.selenium.By;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -17,6 +19,7 @@ import ru.motiw.web.steps.Home.InternalSteps;
 import ru.motiw.web.steps.Login.LoginStepsSteps;
 import ru.motiw.web.steps.Login.RestorePasswordSteps;
 
+import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.page;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.testng.AssertJUnit.assertTrue;
@@ -171,6 +174,9 @@ public class UsersTest extends BaseTest {
          * валидация - авторизации под вновь созданными пользователями
          */
         loginPageSteps.loginAs(editUser);
+        // нужно доп.ожидание после попытки авторизации под пользователем, которому доступ запрещен,
+        // т.к в LoginStepsSteps waitAfterAuthorization уже отрабатывает ожидание для text()='Доступ запрещен'
+        $(By.xpath("//div[@id='logo']")).waitUntil(Condition.visible, 10000);
         assertTrue(loginPageSteps.newUserIsLoggedInAs(editUser));
         assertTrue(loginPageSteps.checkTheSystemFolderMappingUserLibrary(editUser)); // проверяем отображение системной папки Библиотека пользователя
         internalPageSteps.logout(); // Выход из системы
